@@ -35,7 +35,7 @@ for y in range(num_tiles):
         background.blit(water, (x * water_rect.width, y * water_rect.height))
 
 # NEW: add serial connection to PICO
-pico = serial.Serial("COM11")
+pico = serial.Serial("COM16")
 ####################################
 
 coordinate = (0, 0)
@@ -53,11 +53,13 @@ while True:
         coordinate = x_coord, y_coord
     ###############################################
 
-    # check for user input (key press, mouse clicks,joystick)
+    # check for user input (key press, mouse clicks, joystick)
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
             print("BOOM!")
         if event.type == pygame.QUIT:
+            sys.exit()
+        if event.type == pygame.K_q:
             sys.exit()
 
     # update game objects
