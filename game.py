@@ -35,7 +35,7 @@ for y in range(num_tiles):
         background.blit(water, (x * water_rect.width, y * water_rect.height))
 
 # NEW: add serial connection to PICO
-pico = serial.Serial("COM16")
+pico = serial.Serial("COM19")
 ####################################
 
 coordinate = (0, 0)
