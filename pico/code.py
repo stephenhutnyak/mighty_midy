@@ -1,15 +1,12 @@
-from pixycam import PixyCam
 import usb_cdc
+import board
+import analogio
 
-camera = PixyCam()
+knob1 = analogio.AnalogIn(board.A0)
+knob2 = analogio.AnalogIn(board.A1)
 
 while True:
     # wait for data from
     usb_cdc.data.readline()
-    blocks = camera.getBlocks(1)
-    if len(blocks) == 0:
-        msg = f"-1,-1\n"
-    else:
-        block = blocks[0]
-        msg = f"{block.x},{block.y}\n"
-    usb_cdc.data.write(msg)
+    msg = f"{knob1},{knob2}\n"
+    usb_cdc.data.write(msg.encode())
